@@ -18,6 +18,8 @@ import { formatDay, formatNaira } from "@/lib/format";
 const inputClass =
   "rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-zinc-400";
 
+const today = new Date().toISOString().slice(0, 10);
+
 const SORT_OPTIONS = [
   { value: "date-desc", label: "Newest first" },
   { value: "date-asc", label: "Oldest first" },
@@ -141,6 +143,7 @@ function EditExpenseForm({
             name="description"
             type="text"
             required
+            maxLength={499}
             defaultValue={expense.description}
             className={inputClass}
           />
@@ -199,6 +202,7 @@ function EditExpenseForm({
             name="expenseDate"
             type="date"
             required
+            max={today}
             defaultValue={expense.expense_date}
             className={inputClass}
           />
@@ -457,7 +461,13 @@ function ExpenseRow({
   );
 }
 
-export function ExpenseList({ expenses }: { expenses: Expense[] }) {
+export function ExpenseList({
+  expenses,
+  emptyMessage = "No expenses recorded yet this month.",
+}: {
+  expenses: Expense[];
+  emptyMessage?: string;
+}) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [query, setQuery] = useState("");
@@ -652,7 +662,7 @@ export function ExpenseList({ expenses }: { expenses: Expense[] }) {
                 >
                   {hasFilters
                     ? "No expenses match your search or filters."
-                    : "No expenses recorded yet this month."}
+                    : emptyMessage}
                 </td>
               </tr>
             ) : null}

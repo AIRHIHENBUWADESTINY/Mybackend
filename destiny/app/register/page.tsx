@@ -3,7 +3,8 @@ import { RegisterForm } from "./register-form";
 
 export const metadata: Metadata = {
   title: "Create an account",
-  description: "Register a new account",
+  description:
+    "Create a free Destiny Expense Manager account and start tracking your monthly spending in naira.",
 };
 
 export default function RegisterPage() {

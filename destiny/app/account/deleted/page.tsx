@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Account deleted",
-  description: "Your account has been deleted",
+  description: "Your Destiny Expense Manager account and expenses were deleted.",
+  robots: { index: false, follow: false },
 };
 
 export default function AccountDeletedPage() {

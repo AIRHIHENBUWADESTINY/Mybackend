@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { updateAccountAction } from "@/lib/actions/account";
 import { initialAccountState } from "@/lib/actions/account-types";
-import { inputClass, labelClass, primaryButtonClass } from "./ui";
+import { inputClass, labelClass, primaryButtonClass } from "@/lib/ui";
 
 export function AccountForm({
   name,

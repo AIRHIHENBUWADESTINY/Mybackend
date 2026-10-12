@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { addUserAction } from "@/lib/actions/profiles";
 import { initialProfileState } from "@/lib/actions/profiles-types";
-import { inputClass, labelClass, primaryButtonClass } from "@/app/account/ui";
+import { inputClass, labelClass, primaryButtonClass } from "@/lib/ui";
 
 export function AddUserForm() {
   const [state, formAction, pending] = useActionState(

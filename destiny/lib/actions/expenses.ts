@@ -26,6 +26,8 @@ export async function addExpenseAction(
   const expenseDate = formData.get("expenseDate")?.toString() ?? "";
 
   if (!description) return { error: "Description is required." };
+  if (description.length >= 500)
+    return { error: "Description must be less than 500 characters." };
   if (!Number.isFinite(amount) || amount <= 0)
     return { error: "Enter a valid amount greater than 0." };
   if (!(EXPENSE_CATEGORIES as readonly string[]).includes(category))
@@ -44,6 +46,7 @@ export async function addExpenseAction(
   if (error) return { error: error.message };
 
   revalidatePath("/dashboard");
+  revalidatePath("/history");
   return { error: null };
 }
 
@@ -66,6 +69,8 @@ export async function updateExpenseAction(
 
   if (!id) return { error: "Missing expense id." };
   if (!description) return { error: "Description is required." };
+  if (description.length >= 500)
+    return { error: "Description must be less than 500 characters." };
   if (!Number.isFinite(amount) || amount <= 0)
     return { error: "Enter a valid amount greater than 0." };
   if (!(EXPENSE_CATEGORIES as readonly string[]).includes(category))
@@ -87,6 +92,7 @@ export async function updateExpenseAction(
   if (error) return { error: error.message };
 
   revalidatePath("/dashboard");
+  revalidatePath("/history");
   return { error: null };
 }
 
@@ -103,4 +109,5 @@ export async function deleteExpenseAction(formData: FormData) {
   await supabase.from("expenses").delete().eq("id", id).eq("user_id", user.id);
 
   revalidatePath("/dashboard");
+  revalidatePath("/history");
 }

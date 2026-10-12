@@ -3,7 +3,8 @@ import { LoginForm } from "./login-form";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your account",
+  description:
+    "Sign in to Destiny Expense Manager to track and manage your monthly expenses.",
 };
 
 export default async function LoginPage({

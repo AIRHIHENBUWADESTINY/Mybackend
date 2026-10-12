@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { deleteAccountAction } from "@/lib/actions/account";
 import { initialAccountState } from "@/lib/actions/account-types";
-import { dangerButtonClass, inputClass, labelClass } from "./ui";
+import { dangerButtonClass, inputClass, labelClass } from "@/lib/ui";
 
 const CONFIRMATION_PHRASE = "DELETE MY ACCOUNT";
 

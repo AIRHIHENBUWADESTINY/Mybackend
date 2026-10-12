@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Destiny Expense Manager
+
+A monthly expense tracker built with [Next.js](https://nextjs.org) and
+[Supabase](https://supabase.com). Log expenses by chat or form, review daily and
+category breakdowns, and read AI-powered summaries of your spending. Amounts are
+tracked in naira.
 
 ## Getting Started
 

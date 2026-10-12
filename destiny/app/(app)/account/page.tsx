@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/format";
-import { LogoutForm } from "@/app/dashboard/logout-button";
 import { AccountForm } from "./account-form";
 import { DeleteAccountForm } from "./delete-account-form";
-import { cardClass } from "./ui";
+import { cardClass } from "@/lib/ui";
 
 export const metadata: Metadata = {
   title: "Account",
-  description: "Edit or delete your account",
+  description: "Update your name, email or password, or delete your account.",
 };
 
 export default async function AccountPage() {
@@ -39,34 +37,17 @@ export default async function AccountPage() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-12">
       <div className="flex w-full max-w-3xl flex-col gap-8">
-        <header className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-zinc-100 dark:text-zinc-900">
-              {initials}
-            </div>
-            <div>
-              <h1 className="text-2xl font-semibold tracking-tight">
-                Account settings
-              </h1>
-              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                {email} · Member since {formatDate(user.created_at)}
-              </p>
-            </div>
+        <header className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-zinc-100 dark:text-zinc-900">
+            {initials}
           </div>
-          <div className="flex items-center gap-2">
-            <Link
-              href="/dashboard"
-              className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-            >
-              Dashboard
-            </Link>
-            <Link
-              href="/profiles"
-              className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-            >
-              Profiles
-            </Link>
-            <LogoutForm />
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Account settings
+            </h1>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              {email} · Member since {formatDate(user.created_at)}
+            </p>
           </div>
         </header>
 

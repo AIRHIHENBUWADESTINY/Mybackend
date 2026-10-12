@@ -5,7 +5,7 @@ import { removeUserAction } from "@/lib/actions/profiles";
 import { initialProfileState } from "@/lib/actions/profiles-types";
 import { formatDate } from "@/lib/format";
 import type { ManagedAccount } from "@/lib/types/managed-account";
-import { inputClass, labelClass } from "@/app/account/ui";
+import { inputClass, labelClass } from "@/lib/ui";
 
 const deleteButtonClass =
   "rounded-lg px-3 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-60 dark:text-red-400 dark:hover:bg-red-950";

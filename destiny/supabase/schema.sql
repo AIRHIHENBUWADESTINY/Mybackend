@@ -1,4 +1,4 @@
--- Expenses table for the Destiny dashboard.
+-- Expenses table for the Destiny Expense Manager dashboard.
 -- Run this in the Supabase SQL editor (Dashboard > SQL Editor > New query).
 
 create table public.expenses (

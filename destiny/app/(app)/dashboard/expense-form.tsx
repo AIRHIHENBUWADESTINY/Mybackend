@@ -55,6 +55,7 @@ export function AddExpenseForm() {
           name="description"
           type="text"
           required
+          maxLength={499}
           placeholder="e.g. Groceries"
           className={inputClass}
         />
@@ -114,6 +115,7 @@ export function AddExpenseForm() {
           name="expenseDate"
           type="date"
           required
+          max={today}
           defaultValue={today}
           className={inputClass}
         />
