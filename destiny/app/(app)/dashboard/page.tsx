@@ -328,7 +328,7 @@ export default async function DashboardPage({
         )}
 
         <section className="overflow-hidden rounded-xl border border-sharpsave-steel-bg dark:border-zinc-800">
-          <div className="border-b border-sharpsave-steel-bg bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="border-b border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
             <h2 className="font-semibold">Profile information</h2>
           </div>
           <dl className="divide-y divide-zinc-100 dark:divide-zinc-800">

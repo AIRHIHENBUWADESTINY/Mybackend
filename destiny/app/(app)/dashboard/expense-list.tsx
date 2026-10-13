@@ -120,7 +120,7 @@ function EditExpenseForm({
       onSubmit={() => {
         submittedRef.current = true;
       }}
-      className="flex flex-col gap-3 rounded-xl border border-sharpsave-steel-bg bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+      className="flex flex-col gap-3 rounded-xl border border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] p-4 dark:border-zinc-800 dark:bg-zinc-900"
     >
       {state.error ? (
         <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-200">
@@ -262,7 +262,7 @@ function FilterToolbar({
   resultSummary: string;
 }) {
   return (
-    <div className="flex flex-col gap-3 border-b border-sharpsave-steel-bg bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex flex-col gap-3 border-b border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] p-4 dark:border-zinc-800 dark:bg-zinc-900">
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -369,7 +369,7 @@ function Pagination({
     "min-w-8 rounded-lg px-2 py-1.5 text-xs font-semibold tabular-nums transition";
 
   return (
-    <div className="flex flex-col gap-3 border-t border-sharpsave-steel-bg bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 border-t border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900 sm:flex-row sm:items-center sm:justify-between">
       <p className="text-xs text-zinc-500 dark:text-zinc-400">
         Showing {start}–{end} of {total} {total === 1 ? "entry" : "entries"}
       </p>
@@ -582,7 +582,7 @@ export function ExpenseList({
       <div className="overflow-x-auto">
         <table className="w-full min-w-[32rem] text-left">
           <thead>
-            <tr className="border-b border-sharpsave-steel-bg bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
+            <tr className="border-b border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] dark:border-zinc-800 dark:bg-zinc-900">
               <th className="px-4 py-3 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                 Description
               </th>
