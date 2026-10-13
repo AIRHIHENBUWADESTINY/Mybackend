@@ -5,6 +5,7 @@ import { formatDate } from "@/lib/format";
 import { AccountForm } from "./account-form";
 import { DeleteAccountForm } from "./delete-account-form";
 import { cardClass } from "@/lib/ui";
+import { ThemeSelector } from "@/components/theme-selector";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -57,6 +58,14 @@ export default async function AccountPage() {
             Update your details, email address or password.
           </p>
           <AccountForm name={name} email={email} dateOfBirth={dateOfBirth} />
+        </section>
+
+        <section className={cardClass}>
+          <h2 className="font-semibold">Appearance</h2>
+          <p className="mt-0.5 mb-5 text-sm text-zinc-500 dark:text-zinc-400">
+            Choose a light or dark theme, or follow your device setting.
+          </p>
+          <ThemeSelector />
         </section>
 
         <section className="rounded-xl border border-red-200 bg-white p-6 dark:border-red-900 dark:bg-zinc-900">

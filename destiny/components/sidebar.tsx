@@ -6,6 +6,7 @@ import { useFormStatus } from "react-dom";
 import type { ReactNode } from "react";
 import { logoutAction } from "@/lib/actions/auth";
 import { APP_NAME } from "@/lib/site";
+import { ThemeToggle } from "./theme-toggle";
 
 function Logo() {
   return (
@@ -168,12 +169,12 @@ export function Sidebar() {
         })}
       </nav>
 
-      <form
-        action={logoutAction}
-        className="mt-2 border-t border-sharpsave-steel-bg pt-3 dark:border-zinc-800"
-      >
-        <LogoutButton />
-      </form>
+      <div className="mt-2 flex flex-col gap-1 border-t border-sharpsave-steel-bg pt-3 dark:border-zinc-800">
+        <ThemeToggle withLabel className={`${itemBase} ${itemInactive}`} />
+        <form action={logoutAction}>
+          <LogoutButton />
+        </form>
+      </div>
     </aside>
   );
 }

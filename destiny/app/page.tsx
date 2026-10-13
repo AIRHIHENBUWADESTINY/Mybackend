@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   APP_DESCRIPTION,
   APP_NAME,
@@ -253,6 +254,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle className="flex h-9 w-9 items-center justify-center rounded-lg text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5" />
             <Link
               href="/login"
               className="rounded-lg px-3 py-2 text-sm font-semibold text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5"
