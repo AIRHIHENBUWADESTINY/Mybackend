@@ -1,11 +1,34 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   SHARPSAVE Brand Identity Palette
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Core Colors */
+  --sharpsave-green-dark: #124c22; /* Dark metallic text color */
+  --sharpsave-green-light: #44a753; /* Bright gradient dial background */
+  --sharpsave-gold: #d8be6c; /* Metallic arrow accent color */
+  --sharpsave-diamond-blue: #d4eaf7; /* High-reflection diamond tint */
+
+  /* Neutral Backgrounds & Borders */
+  --sharpsave-steel-bg: #cbd3d6; /* Brushed metal canvas tint */
+  --sharpsave-card-surface: #ffffff; /* High contrast UI element panels */
+  --sharpsave-text-primary: #121814; /* Deep off-black body text */
+
+  --background: #eef4f8; /* Diamond-blue tinted app canvas */
+  --foreground: var(--sharpsave-text-primary);
 }
 
 @theme inline {
+  --color-sharpsave-green-dark: var(--sharpsave-green-dark);
+  --color-sharpsave-green-light: var(--sharpsave-green-light);
+  --color-sharpsave-gold: var(--sharpsave-gold);
+  --color-sharpsave-diamond-blue: var(--sharpsave-diamond-blue);
+  --color-sharpsave-steel-bg: var(--sharpsave-steel-bg);
+  --color-sharpsave-card-surface: var(--sharpsave-card-surface);
+  --color-sharpsave-text-primary: var(--sharpsave-text-primary);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -14,13 +37,57 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b140f;
+    --foreground: #e7efe9;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* ==========================================================================
+   Functional UI Component Styling Examples
+   ========================================================================== */
+
+/* Brand Button styling using the dark green identity */
+.btn-primary-sharpsave {
+  background-color: var(--sharpsave-green-dark);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary-sharpsave:hover {
+  background-color: var(--sharpsave-green-light);
+  transform: translateY(-1px);
+}
+
+/* Financial Accent Indicator Component */
+.metric-badge-growth {
+  background-color: rgba(68, 167, 83, 0.12);
+  color: var(--sharpsave-green-light);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(68, 167, 83, 0.2);
+}
+
+/* Premium / Milestones Badge Component */
+.metric-badge-premium {
+  background-color: rgba(216, 190, 108, 0.15);
+  color: var(--sharpsave-gold);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(216, 190, 108, 0.3);
 }

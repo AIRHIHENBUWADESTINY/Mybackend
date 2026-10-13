@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     "personal finance",
     "naira expenses",
     "Nigeria expense tracker",
+    "save money",
     APP_NAME,
   ],
   authors: [{ name: APP_NAME }],
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: dark)", color: "#124c22" },
   ],
 };
 

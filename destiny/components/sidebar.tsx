@@ -9,7 +9,7 @@ import { APP_NAME } from "@/lib/site";
 
 function Logo() {
   return (
-    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900">
+    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sharpsave-green-dark text-white">
       <svg
         viewBox="0 0 24 24"
         fill="none"
@@ -111,9 +111,9 @@ const NAV_ITEMS: { href: string; label: string; icon: ReactNode }[] = [
 const itemBase =
   "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition";
 const itemActive =
-  "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900";
+  "bg-sharpsave-green-dark text-white";
 const itemInactive =
-  "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100";
+  "text-zinc-600 hover:bg-sharpsave-green-dark/5 hover:text-sharpsave-green-dark dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-sharpsave-green-light";
 
 function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -140,13 +140,13 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-0 flex h-screen w-16 shrink-0 flex-col border-r border-zinc-200 bg-white px-2.5 py-6 dark:border-zinc-800 dark:bg-zinc-900 md:w-60 md:px-4">
+    <aside className="sticky top-0 flex h-screen w-16 shrink-0 flex-col border-r border-sharpsave-steel-bg bg-white px-2.5 py-6 dark:border-zinc-800 dark:bg-zinc-900 md:w-60 md:px-4">
       <Link
         href="/dashboard"
         className="mb-8 flex items-center gap-3 rounded-lg px-1.5"
       >
         <Logo />
-        <span className="hidden text-base font-semibold leading-tight tracking-tight md:inline">
+        <span className="hidden text-base font-semibold leading-tight tracking-tight text-sharpsave-green-dark md:inline">
           {APP_NAME}
         </span>
       </Link>
@@ -170,7 +170,7 @@ export function Sidebar() {
 
       <form
         action={logoutAction}
-        className="mt-2 border-t border-zinc-200 pt-3 dark:border-zinc-800"
+        className="mt-2 border-t border-sharpsave-steel-bg pt-3 dark:border-zinc-800"
       >
         <LogoutButton />
       </form>
