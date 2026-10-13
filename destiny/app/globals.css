@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Dark mode is opt-in via a `.dark` class on <html>. The app paints the
+   light Sharpsave canvas by default so the brand colours always read true. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ==========================================================================
    SHARPSAVE Brand Identity Palette
    ========================================================================== */
@@ -35,11 +39,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b140f;
-    --foreground: #e7efe9;
-  }
+.dark {
+  --background: #0b140f;
+  --foreground: #e7efe9;
 }
 
 body {

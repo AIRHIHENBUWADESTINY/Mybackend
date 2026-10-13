@@ -29,6 +29,8 @@ const SCHEMA_SQL = `create table public.expenses (
 alter table public.expenses enable row level security;
 -- ... (includes select/insert/update/delete policies for auth.uid() = user_id)`;
 
+const cardClass =
+  "rounded-2xl border border-sharpsave-steel-bg bg-sharpsave-card-surface shadow-sm shadow-sharpsave-green-dark/5";
 
 function SummaryCard({
   label,
@@ -40,16 +42,14 @@ function SummaryCard({
   sub?: string;
 }) {
   return (
-    <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-      <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+    <div className={`${cardClass} p-4 sm:p-5`}>
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
         {label}
       </p>
-      <p className="mt-2 text-2xl font-semibold tabular-nums tracking-tight text-zinc-900 dark:text-zinc-100">
+      <p className="mt-1.5 text-lg font-bold tabular-nums tracking-tight text-sharpsave-green-dark sm:text-2xl">
         {value}
       </p>
-      {sub ? (
-        <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">{sub}</p>
-      ) : null}
+      {sub ? <p className="mt-1 truncate text-xs text-zinc-400">{sub}</p> : null}
     </div>
   );
 }
@@ -67,17 +67,17 @@ function DailyChart({
 
   if (!hasData) {
     return (
-      <p className="py-12 text-center text-sm text-zinc-500 dark:text-zinc-400">
+      <p className="py-12 text-center text-sm text-zinc-500">
         No spending recorded in this month.
       </p>
     );
   }
 
   return (
-    <div className="flex h-44 items-end gap-[3px]">
+    <div className="flex h-40 items-end gap-[2px] sm:h-44 sm:gap-[3px]">
       {dailyTotals.map((d) => {
         const height =
-          d.total > 0 ? Math.max(4, Math.round((d.total / maxDaily) * 176)) : 1;
+          d.total > 0 ? Math.max(4, Math.round((d.total / maxDaily) * 160)) : 1;
         return (
           <div
             key={d.day}
@@ -85,7 +85,7 @@ function DailyChart({
             title={`${monthLabel} ${d.day} · ${formatNaira(d.total)}`}
           >
             <div
-              className={`w-full rounded-t ${d.total > 0 ? "bg-sharpsave-green-light" : "bg-zinc-100 dark:bg-zinc-900"}`}
+              className={`w-full rounded-t ${d.total > 0 ? "bg-sharpsave-green-light" : "bg-sharpsave-green-dark/5"}`}
               style={{ height }}
             />
           </div>
@@ -174,37 +174,49 @@ export default async function DashboardPage({
     .toUpperCase();
 
   return (
-    <main className="flex flex-1 flex-col items-center px-6 py-12">
-      <div className="flex w-full max-w-5xl flex-col gap-8">
-        <header className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sharpsave-green-dark text-sm font-semibold text-white">
-            {initials}
-          </div>
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-sharpsave-green-dark">
-              Welcome back{name ? `, ${name.split(" ")[0]}` : ""}
-            </h1>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-              {user.email} · {range.label}
-            </p>
+    <main className="flex flex-1 flex-col items-center px-4 py-6 sm:px-6 sm:py-10">
+      <div className="flex w-full max-w-5xl flex-col gap-5 sm:gap-6">
+        <header className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-sharpsave-green-dark to-sharpsave-green-light p-5 text-white shadow-lg shadow-sharpsave-green-dark/20 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-sm font-bold ring-1 ring-white/25">
+                {initials}
+              </span>
+              <div className="min-w-0">
+                <h1 className="truncate text-lg font-bold tracking-tight sm:text-xl">
+                  Welcome back{name ? `, ${name.split(" ")[0]}` : ""}
+                </h1>
+                <p className="truncate text-xs text-white/70 sm:text-sm">
+                  {user.email}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 sm:flex-col sm:items-end sm:gap-1">
+              <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">
+                {range.label}
+              </span>
+              <span className="text-xs text-white/70">
+                {count} {count === 1 ? "entry" : "entries"}
+              </span>
+            </div>
           </div>
         </header>
 
         {tableMissing ? (
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 dark:border-amber-900 dark:bg-amber-950/40">
-            <h2 className="font-semibold text-amber-900 dark:text-amber-200">
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+            <h2 className="font-semibold text-amber-900">
               The expenses table isn&apos;t set up yet
             </h2>
-            <p className="mt-1 text-sm text-amber-800 dark:text-amber-300">
+            <p className="mt-1 text-sm text-amber-800">
               Create the table and its row-level security policies in the
               Supabase SQL editor before using expenses:
             </p>
-            <pre className="mt-3 overflow-x-auto rounded-lg bg-white p-4 text-xs text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200">
+            <pre className="mt-3 overflow-x-auto rounded-lg bg-white p-4 text-xs text-zinc-800">
               {SCHEMA_SQL}
             </pre>
-            <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">
+            <p className="mt-2 text-sm text-amber-800">
               The full script is in{" "}
-              <code className="rounded bg-white/60 px-1 py-0.5 dark:bg-black/30">
+              <code className="rounded bg-white/60 px-1 py-0.5">
                 supabase/schema.sql
               </code>
               .
@@ -214,13 +226,7 @@ export default async function DashboardPage({
           <>
             <MonthPicker range={range} monthsWithData={monthsWithData} />
 
-            <MonthlySummary
-              monthLabel={range.label}
-              monthKey={range.key}
-              isCurrentMonth={range.isCurrent}
-            />
-
-            <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <section className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
               <SummaryCard
                 label="Total spent"
                 value={formatNaira(total)}
@@ -229,11 +235,7 @@ export default async function DashboardPage({
               <SummaryCard
                 label="Transactions"
                 value={String(count)}
-                sub={
-                  count
-                    ? `Recorded in ${range.label}`
-                    : `No entries in ${range.label}`
-                }
+                sub={count ? "Recorded this month" : "No entries yet"}
               />
               <SummaryCard
                 label="Average"
@@ -247,24 +249,34 @@ export default async function DashboardPage({
               />
             </section>
 
+            <MonthlySummary
+              monthLabel={range.label}
+              monthKey={range.key}
+              isCurrentMonth={range.isCurrent}
+            />
+
             {range.isCurrent ? <ExpenseChat /> : null}
 
-            <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-              <div className="flex flex-col gap-4 rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+              <div className={`${cardClass} flex flex-col gap-4 p-5 sm:p-6`}>
                 <div>
-                  <h2 className="font-semibold">Add expense</h2>
-                  <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
+                  <h2 className="font-semibold text-sharpsave-green-dark">
+                    Add expense
+                  </h2>
+                  <p className="mt-0.5 text-sm text-zinc-500">
                     Record a new expense in naira
                   </p>
                 </div>
                 <AddExpenseForm />
               </div>
 
-              <div className="flex flex-col gap-6 lg:col-span-2">
-                <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-                  <div className="mb-5 flex items-center justify-between">
-                    <h2 className="font-semibold">Daily spending</h2>
-                    <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              <div className="flex flex-col gap-5 lg:col-span-2 lg:gap-6">
+                <div className={`${cardClass} p-5 sm:p-6`}>
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <h2 className="font-semibold text-sharpsave-green-dark">
+                      Daily spending
+                    </h2>
+                    <span className="shrink-0 text-xs text-zinc-500 sm:text-sm">
                       {range.label}
                     </span>
                   </div>
@@ -275,10 +287,12 @@ export default async function DashboardPage({
                   />
                 </div>
 
-                <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-                  <h2 className="mb-5 font-semibold">By category</h2>
+                <div className={`${cardClass} p-5 sm:p-6`}>
+                  <h2 className="mb-5 font-semibold text-sharpsave-green-dark">
+                    By category
+                  </h2>
                   {categoryTotals.length === 0 ? (
-                    <p className="py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+                    <p className="py-6 text-center text-sm text-zinc-500">
                       Nothing to show for {range.label}.
                     </p>
                   ) : (
@@ -292,15 +306,15 @@ export default async function DashboardPage({
                         );
                         return (
                           <div key={category} className="flex flex-col gap-1.5">
-                            <div className="flex items-center justify-between text-sm">
-                              <span className="font-medium text-zinc-700 dark:text-zinc-300">
+                            <div className="flex items-center justify-between gap-3 text-sm">
+                              <span className="font-medium text-zinc-700">
                                 {category}
                               </span>
-                              <span className="font-semibold tabular-nums text-zinc-900 dark:text-zinc-100">
+                              <span className="font-semibold tabular-nums text-sharpsave-text-primary">
                                 {formatNaira(total)}
                               </span>
                             </div>
-                            <div className="h-2.5 w-full overflow-hidden rounded-full bg-sharpsave-green-dark/5 dark:bg-zinc-800">
+                            <div className="h-2.5 w-full overflow-hidden rounded-full bg-sharpsave-green-dark/5">
                               <div
                                 className={`h-full rounded-full ${styles.bar}`}
                                 style={{ width: `${width}%` }}
@@ -317,8 +331,10 @@ export default async function DashboardPage({
 
             <section className="flex flex-col gap-4">
               <div>
-                <h2 className="font-semibold">All expenses</h2>
-                <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
+                <h2 className="font-semibold text-sharpsave-green-dark">
+                  All expenses
+                </h2>
+                <p className="mt-0.5 text-sm text-zinc-500">
                   {range.label} · {count} {count === 1 ? "entry" : "entries"}
                 </p>
               </div>
@@ -327,11 +343,13 @@ export default async function DashboardPage({
           </>
         )}
 
-        <section className="overflow-hidden rounded-xl border border-sharpsave-steel-bg dark:border-zinc-800">
-          <div className="border-b border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <h2 className="font-semibold">Profile information</h2>
+        <section className={`${cardClass} overflow-hidden`}>
+          <div className="border-b border-sharpsave-steel-bg bg-sharpsave-green-dark/[0.04] px-5 py-4">
+            <h2 className="font-semibold text-sharpsave-green-dark">
+              Profile information
+            </h2>
           </div>
-          <dl className="divide-y divide-zinc-100 dark:divide-zinc-800">
+          <dl className="divide-y divide-zinc-100">
             {[
               { label: "Name", value: name ?? "—" },
               { label: "Email", value: user.email ?? "—" },
@@ -341,12 +359,12 @@ export default async function DashboardPage({
             ].map((field) => (
               <div
                 key={field.label}
-                className="flex flex-col gap-1 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between dark:bg-zinc-950"
+                className="flex flex-col gap-1 bg-sharpsave-card-surface px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
               >
-                <dt className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <dt className="text-sm font-medium text-zinc-500">
                   {field.label}
                 </dt>
-                <dd className="text-sm font-semibold break-all text-zinc-900 dark:text-zinc-100">
+                <dd className="text-sm font-semibold break-all text-sharpsave-text-primary">
                   {field.value}
                 </dd>
               </div>
