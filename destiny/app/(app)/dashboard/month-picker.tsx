@@ -8,10 +8,10 @@ import {
 } from "@/lib/month";
 
 const navButton =
-  "rounded-lg border border-zinc-300 px-3 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800";
+  "rounded-lg border border-sharpsave-steel-bg px-3 py-2 text-sm font-semibold text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800";
 
 const controlClass =
-  "rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100";
+  "rounded-lg border border-sharpsave-steel-bg bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-sharpsave-green-dark focus:ring-2 focus:ring-sharpsave-green-dark/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-sharpsave-green-light";
 
 function monthHref(ref: { year: number; month: number }) {
   return `/dashboard?month=${monthKey(ref)}`;
@@ -28,7 +28,7 @@ export function MonthPicker({
   const next = shiftMonth(range, 1);
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-4 sm:flex-row sm:items-center dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex flex-col gap-3 rounded-xl border border-sharpsave-steel-bg bg-white p-4 sm:flex-row sm:items-center dark:border-zinc-800 dark:bg-zinc-900">
       <div className="flex items-center gap-2">
         <Link
           href={monthHref(previous)}
@@ -88,7 +88,7 @@ export function MonthPicker({
         </datalist>
         <button
           type="submit"
-          className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="rounded-lg bg-sharpsave-green-dark px-4 py-2 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light"
         >
           Go
         </button>

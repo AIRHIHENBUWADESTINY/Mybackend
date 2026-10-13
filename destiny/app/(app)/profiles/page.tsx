@@ -55,11 +55,11 @@ export default async function ProfilesPage() {
     <main className="flex flex-1 flex-col items-center px-6 py-12">
       <div className="flex w-full max-w-3xl flex-col gap-8">
         <header className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-zinc-100 dark:text-zinc-900">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sharpsave-green-dark text-sm font-semibold text-white">
             {initials}
           </div>
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="text-2xl font-semibold tracking-tight text-sharpsave-green-dark">
               Profiles
             </h1>
             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">

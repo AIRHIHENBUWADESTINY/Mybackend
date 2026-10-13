@@ -19,7 +19,7 @@ export default function AccountDeletedPage() {
         </p>
         <Link
           href="/register"
-          className="rounded-lg bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="rounded-lg bg-sharpsave-green-dark px-6 py-3 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light"
         >
           Create a new account
         </Link>

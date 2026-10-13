@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 function SummaryCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
       <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
         {label}
       </p>
@@ -49,7 +49,9 @@ export default async function HistoryPage() {
     <main className="flex flex-1 flex-col items-center px-6 py-12">
       <div className="flex w-full max-w-5xl flex-col gap-8">
         <header className="flex flex-col gap-1">
-          <h1 className="text-2xl font-semibold tracking-tight">History</h1>
+          <h1 className="text-2xl font-semibold tracking-tight text-sharpsave-green-dark">
+            History
+          </h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             Every expense you&apos;ve recorded, newest first.
           </p>

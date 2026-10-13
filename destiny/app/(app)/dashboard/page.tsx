@@ -85,7 +85,7 @@ function DailyChart({
             title={`${monthLabel} ${d.day} · ${formatNaira(d.total)}`}
           >
             <div
-              className={`w-full rounded-t ${d.total > 0 ? "bg-zinc-300 dark:bg-zinc-700" : "bg-zinc-100 dark:bg-zinc-900"}`}
+              className={`w-full rounded-t ${d.total > 0 ? "bg-sharpsave-green-light" : "bg-zinc-100 dark:bg-zinc-900"}`}
               style={{ height }}
             />
           </div>
@@ -177,11 +177,11 @@ export default async function DashboardPage({
     <main className="flex flex-1 flex-col items-center px-6 py-12">
       <div className="flex w-full max-w-5xl flex-col gap-8">
         <header className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-zinc-100 dark:text-zinc-900">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sharpsave-green-dark text-sm font-semibold text-white">
             {initials}
           </div>
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="text-2xl font-semibold tracking-tight text-sharpsave-green-dark">
               Welcome back{name ? `, ${name.split(" ")[0]}` : ""}
             </h1>
             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
@@ -250,7 +250,7 @@ export default async function DashboardPage({
             {range.isCurrent ? <ExpenseChat /> : null}
 
             <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-              <div className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex flex-col gap-4 rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
                 <div>
                   <h2 className="font-semibold">Add expense</h2>
                   <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
@@ -261,7 +261,7 @@ export default async function DashboardPage({
               </div>
 
               <div className="flex flex-col gap-6 lg:col-span-2">
-                <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
                   <div className="mb-5 flex items-center justify-between">
                     <h2 className="font-semibold">Daily spending</h2>
                     <span className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -275,7 +275,7 @@ export default async function DashboardPage({
                   />
                 </div>
 
-                <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
                   <h2 className="mb-5 font-semibold">By category</h2>
                   {categoryTotals.length === 0 ? (
                     <p className="py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
@@ -300,7 +300,7 @@ export default async function DashboardPage({
                                 {formatNaira(total)}
                               </span>
                             </div>
-                            <div className="h-2.5 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
+                            <div className="h-2.5 w-full overflow-hidden rounded-full bg-sharpsave-green-dark/5 dark:bg-zinc-800">
                               <div
                                 className={`h-full rounded-full ${styles.bar}`}
                                 style={{ width: `${width}%` }}
@@ -327,8 +327,8 @@ export default async function DashboardPage({
           </>
         )}
 
-        <section className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
-          <div className="border-b border-zinc-200 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <section className="overflow-hidden rounded-xl border border-sharpsave-steel-bg dark:border-zinc-800">
+          <div className="border-b border-sharpsave-steel-bg bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
             <h2 className="font-semibold">Profile information</h2>
           </div>
           <dl className="divide-y divide-zinc-100 dark:divide-zinc-800">

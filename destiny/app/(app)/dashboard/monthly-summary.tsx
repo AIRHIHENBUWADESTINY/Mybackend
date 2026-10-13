@@ -31,7 +31,7 @@ export function MonthlySummary({
   };
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h2 className="font-semibold">Monthly summary</h2>
@@ -43,7 +43,7 @@ export function MonthlySummary({
           type="button"
           onClick={handleGenerate}
           disabled={pending}
-          className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="rounded-lg bg-sharpsave-green-dark px-4 py-2 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light disabled:opacity-60"
         >
           {pending
             ? "Generating…"
@@ -67,7 +67,7 @@ export function MonthlySummary({
 
           <div className="flex flex-wrap items-center gap-2">
             {state.data.improvement_area ? (
-              <span className="rounded-full bg-zinc-900 px-2.5 py-0.5 text-xs font-medium text-white dark:bg-zinc-100 dark:text-zinc-900">
+              <span className="rounded-full border border-sharpsave-gold/40 bg-sharpsave-gold/15 px-2.5 py-0.5 text-xs font-medium text-sharpsave-green-dark">
                 {state.data.improvement_area}
               </span>
             ) : null}

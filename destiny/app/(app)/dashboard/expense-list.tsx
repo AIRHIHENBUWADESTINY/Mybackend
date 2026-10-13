@@ -16,7 +16,7 @@ import {
 import { formatDay, formatNaira } from "@/lib/format";
 
 const inputClass =
-  "rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-zinc-400";
+  "rounded-lg border border-sharpsave-steel-bg bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-sharpsave-green-dark focus:ring-2 focus:ring-sharpsave-green-dark/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-sharpsave-green-light";
 
 const today = new Date().toISOString().slice(0, 10);
 
@@ -120,7 +120,7 @@ function EditExpenseForm({
       onSubmit={() => {
         submittedRef.current = true;
       }}
-      className="flex flex-col gap-3 rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+      className="flex flex-col gap-3 rounded-xl border border-sharpsave-steel-bg bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
     >
       {state.error ? (
         <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-200">
@@ -220,7 +220,7 @@ function EditExpenseForm({
         <button
           type="submit"
           disabled={pending}
-          className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="rounded-lg bg-sharpsave-green-dark px-4 py-2 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light disabled:opacity-60"
         >
           {pending ? "Saving…" : "Save"}
         </button>
@@ -262,7 +262,7 @@ function FilterToolbar({
   resultSummary: string;
 }) {
   return (
-    <div className="flex flex-col gap-3 border-b border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex flex-col gap-3 border-b border-sharpsave-steel-bg bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -285,7 +285,7 @@ function FilterToolbar({
             />
             <button
               type="submit"
-              className="shrink-0 rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="shrink-0 rounded-lg bg-sharpsave-green-dark px-4 py-2 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light"
             >
               Search
             </button>
@@ -334,7 +334,7 @@ function FilterToolbar({
             type="button"
             onClick={onClear}
             disabled={!showClear}
-            className="w-full rounded-lg border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+            className="w-full rounded-lg border border-sharpsave-steel-bg px-4 py-2 text-sm font-semibold text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
           >
             Clear filters
           </button>
@@ -364,12 +364,12 @@ function Pagination({
   total: number;
 }) {
   const navClass =
-    "rounded-lg border border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800";
+    "rounded-lg border border-sharpsave-steel-bg px-3 py-1.5 text-xs font-semibold text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800";
   const pageClass =
     "min-w-8 rounded-lg px-2 py-1.5 text-xs font-semibold tabular-nums transition";
 
   return (
-    <div className="flex flex-col gap-3 border-t border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 border-t border-sharpsave-steel-bg bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900 sm:flex-row sm:items-center sm:justify-between">
       <p className="text-xs text-zinc-500 dark:text-zinc-400">
         Showing {start}–{end} of {total} {total === 1 ? "entry" : "entries"}
       </p>
@@ -400,7 +400,7 @@ function Pagination({
               aria-current={item === page ? "page" : undefined}
               className={`${pageClass} ${
                 item === page
-                  ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                  ? "bg-sharpsave-green-dark text-white"
                   : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
               }`}
             >
@@ -560,12 +560,12 @@ export function ExpenseList({
     : `${expenses.length} ${expenses.length === 1 ? "entry" : "entries"} · ${formatNaira(visibleTotal)}`;
 
   const headerButtonClass =
-    "inline-flex items-center gap-1 uppercase tracking-wide transition hover:text-zinc-900 dark:hover:text-zinc-100";
+    "inline-flex items-center gap-1 uppercase tracking-wide transition hover:text-sharpsave-green-dark dark:hover:text-sharpsave-green-light";
 
   return (
     <div
       ref={listRef}
-      className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+      className="overflow-hidden rounded-xl border border-sharpsave-steel-bg dark:border-zinc-800"
     >
       <FilterToolbar
         draft={draft}
@@ -582,7 +582,7 @@ export function ExpenseList({
       <div className="overflow-x-auto">
         <table className="w-full min-w-[32rem] text-left">
           <thead>
-            <tr className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
+            <tr className="border-b border-sharpsave-steel-bg bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
               <th className="px-4 py-3 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                 Description
               </th>

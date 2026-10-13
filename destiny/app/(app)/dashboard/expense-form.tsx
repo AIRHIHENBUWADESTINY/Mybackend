@@ -11,7 +11,7 @@ import {
 const today = new Date().toISOString().slice(0, 10);
 
 const inputClass =
-  "rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-zinc-400";
+  "rounded-lg border border-sharpsave-steel-bg bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-sharpsave-green-dark focus:ring-2 focus:ring-sharpsave-green-dark/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-sharpsave-green-light";
 
 export function AddExpenseForm() {
   const [state, formAction, pending] = useActionState(
@@ -124,7 +124,7 @@ export function AddExpenseForm() {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        className="rounded-lg bg-sharpsave-green-dark px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? "Adding…" : "Add expense"}
       </button>

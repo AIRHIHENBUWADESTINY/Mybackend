@@ -26,7 +26,7 @@ type ChatMessage = {
 };
 
 const inputClass =
-  "flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-zinc-400";
+  "flex-1 rounded-lg border border-sharpsave-steel-bg bg-white px-3 py-2 text-sm text-zinc-900 outline-none transition focus:border-sharpsave-green-dark focus:ring-2 focus:ring-sharpsave-green-dark/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-sharpsave-green-light";
 
 const EXAMPLES = [
   "Spent 4500 on cold noodles and a Fanta",
@@ -59,7 +59,7 @@ function UndoButton({
       onClick={() => {
         onUndone(ids);
       }}
-      className="mt-2 rounded-lg border border-zinc-300 px-2.5 py-1 text-xs font-semibold text-zinc-600 transition hover:bg-zinc-100 disabled:opacity-60 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+      className="mt-2 rounded-lg border border-sharpsave-steel-bg px-2.5 py-1 text-xs font-semibold text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 disabled:opacity-60 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
     >
       {pending ? "Undoing…" : `Undo ${ids.length === 1 ? "entry" : "entries"}`}
     </button>
@@ -186,7 +186,7 @@ export function ExpenseChat() {
   };
 
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex flex-col gap-4 rounded-xl border border-sharpsave-steel-bg bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       <div>
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -202,7 +202,7 @@ export function ExpenseChat() {
               onClick={clear}
               disabled={pending || undoing}
               title="Clears this conversation. Saved expenses are not deleted."
-              className="shrink-0 rounded-lg border border-zinc-300 px-2.5 py-1 text-xs font-medium text-zinc-600 transition hover:bg-zinc-100 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+              className="shrink-0 rounded-lg border border-sharpsave-steel-bg px-2.5 py-1 text-xs font-medium text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               Clear chat
             </button>
@@ -218,7 +218,7 @@ export function ExpenseChat() {
                 key={example}
                 type="button"
                 onClick={() => send(example)}
-                className="rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-600 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="rounded-full border border-sharpsave-steel-bg px-3 py-1.5 text-xs font-medium text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
                 {example}
               </button>
@@ -234,7 +234,7 @@ export function ExpenseChat() {
                   key={example}
                   type="button"
                   onClick={() => send(example)}
-                  className="rounded-full border border-dashed border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-500 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                  className="rounded-full border border-dashed border-sharpsave-steel-bg px-3 py-1.5 text-xs font-medium text-zinc-500 transition hover:bg-sharpsave-green-dark/5 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
                 >
                   {example}
                 </button>
@@ -248,7 +248,7 @@ export function ExpenseChat() {
             message.role === "user" ? (
               <div
                 key={message.id}
-                className="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-zinc-900 px-4 py-2 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
+                className="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-sharpsave-green-dark px-4 py-2 text-sm text-white"
               >
                 {message.text}
               </div>
@@ -313,7 +313,7 @@ export function ExpenseChat() {
         <button
           type="submit"
           disabled={pending || input.trim().length === 0}
-          className="shrink-0 rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="shrink-0 rounded-lg bg-sharpsave-green-dark px-4 py-2 text-sm font-semibold text-white transition hover:bg-sharpsave-green-light disabled:opacity-60"
         >
           {pending ? "…" : "Send"}
         </button>

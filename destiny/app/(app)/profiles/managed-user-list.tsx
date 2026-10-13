@@ -11,7 +11,7 @@ const deleteButtonClass =
   "rounded-lg px-3 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-60 dark:text-red-400 dark:hover:bg-red-950";
 
 const cancelButtonClass =
-  "rounded-lg px-3 py-2 text-sm font-semibold text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800";
+  "rounded-lg px-3 py-2 text-sm font-semibold text-sharpsave-green-dark transition hover:bg-sharpsave-green-dark/5 dark:text-zinc-400 dark:hover:bg-zinc-800";
 
 function DeleteManagedUserForm({
   userId,
@@ -124,14 +124,14 @@ export function ManagedUserList({ accounts }: { accounts: ManagedAccount[] }) {
 
   if (accounts.length === 0) {
     return (
-      <p className="rounded-xl border border-zinc-200 px-4 py-10 text-center text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+      <p className="rounded-xl border border-sharpsave-steel-bg px-4 py-10 text-center text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
         No accounts added yet. Use the form above to create one.
       </p>
     );
   }
 
   return (
-    <ul className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
+    <ul className="overflow-hidden rounded-xl border border-sharpsave-steel-bg dark:border-zinc-800">
       {accounts.map((account) => (
         <ManagedUserRow
           key={account.id}

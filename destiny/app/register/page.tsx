@@ -11,7 +11,7 @@ export default function RegisterPage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-16">
       <div className="mb-8 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">
+        <h1 className="text-2xl font-semibold tracking-tight text-sharpsave-green-dark">
           Create your account
         </h1>
         <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
